@@ -1,0 +1,38 @@
+﻿<%-- src/main/webapp/ch10/head.txt --%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/style.css">
+
+<%
+    // 获取登录状态
+    com.design.project_design.Login headLoginBean = (com.design.project_design.Login)session.getAttribute("loginBean");
+    boolean isLoggedIn = (headLoginBean != null && headLoginBean.getLogname() != null && !headLoginBean.getLogname().isEmpty());
+%>
+
+<div class="navbar">
+    <a href="index.jsp" class="brand" style="display: flex; align-items: center; gap: 8px; text-decoration: none;">
+        <span style="font-size: 24px;">🐝</span>
+        <span>小蜜蜂手机网</span>
+    </a>
+
+    <% if (isLoggedIn) { %>
+        <%-- 只有登录后才显示的导航链接 --%>
+        <div class="nav-links">
+            <a href="index.jsp">浏览</a>
+            <a href="searchMobile.jsp">搜索</a>
+            <a href="lookShoppingCar.jsp">购物车</a>
+            <a href="lookOrderForm.jsp">订单</a>
+
+            <%-- 在线聊天室入口 --%>
+            <a href="chatRoom.jsp" style="color: #0071e3; font-weight: bold;">💬 在线聊天</a>
+        </div>
+    <% } %>
+
+    <div class="auth">
+        <% if (!isLoggedIn) { %>
+            <a href="login.jsp" style="color:#0071e3; font-size:13px; text-decoration:none;">登录</a>
+        <% } else { %>
+            <span style="font-size:13px; color:#888;">Hi, <%=headLoginBean.getLogname()%></span>
+            <a href="exitServlet" style="margin-left:15px; color:#888; font-size:13px; text-decoration:none;">退出</a>
+        <% } %>
+    </div>
+</div>

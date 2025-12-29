@@ -1,0 +1,104 @@
+:root {
+    /* 核心配色：暖灰色系 */
+    --bg-main: #fcfcfc;          /* 极浅灰近白 */
+    --text-primary: #1d1d1f;     /* 炭黑 */
+    --text-secondary: #86868b;   /* 灰 */
+    --accent-color: #333333;     /* 深色强调 */
+    --card-bg: #ffffff;
+    --soft-shadow: 0 4px 24px rgba(0, 0, 0, 0.04);
+}
+
+body {
+    font-family: -apple-system, "SF Pro SC", "HanHei SC", "PingFang SC", sans-serif;
+    background-color: var(--bg-main);
+    color: var(--text-primary);
+    margin: 0;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* 导航栏：极致简约 */
+.navbar {
+    height: 52px; /* 极窄设计 */
+    background: rgba(252, 252, 252, 0.8);
+    backdrop-filter: saturate(180%) blur(20px);
+    border-bottom: 0.5px solid rgba(0,0,0,0.1);
+    padding: 0 15%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 999;
+}
+
+.brand {
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: -0.5px;
+    text-decoration: none;
+    color: var(--text-primary);
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-secondary);
+    font-size: 13px;
+    margin: 0 20px;
+    transition: color 0.3s;
+}
+.nav-links a:hover { color: var(--text-primary); }
+
+/* 容器布局 */
+.container {
+    max-width: 1080px;
+    margin: 60px auto;
+    padding: 0 20px;
+}
+
+/* 按钮：药丸型设计 */
+.btn {
+    padding: 8px 18px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+    border: none;
+    display: inline-block;
+    text-decoration: none;
+}
+.btn-primary { background: var(--accent-color); color: white; }
+.btn-primary:hover { opacity: 0.85; transform: scale(1.02); }
+.btn-outline { background: transparent; border: 1px solid #d2d2d7; color: var(--text-primary); }
+
+/* 商品网格：无边框感 */
+.goods-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2列布局比4列更有高级感 */
+    gap: 40px;
+}
+
+.product-card {
+    background: var(--card-bg);
+    border-radius: 12px;
+    padding: 30px;
+    transition: transform 0.4s ease;
+    text-align: center;
+}
+.product-card:hover { transform: translateY(-5px); }
+
+.product-img {
+    height: 320px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+.product-img img { max-height: 100%; object-fit: contain; }
+
+.product-price {
+    font-size: 17px;
+    font-weight: 500;
+    margin: 10px 0;
+}
