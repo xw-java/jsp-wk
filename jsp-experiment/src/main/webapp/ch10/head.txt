@@ -6,6 +6,15 @@
     // 获取登录状态
     com.design.project_design.Login headLoginBean = (com.design.project_design.Login)session.getAttribute("loginBean");
     boolean isLoggedIn = (headLoginBean != null && headLoginBean.getLogname() != null && !headLoginBean.getLogname().isEmpty());
+
+    // 【新增】获取当前页面路径，用于高亮导航
+    String uri = request.getRequestURI();
+    String p_index = uri.contains("index.jsp") ? "active" : "";
+    String p_look = uri.contains("lookMobile.jsp") || uri.contains("byPageShow.jsp") ? "active" : ""; // 浏览列表也算浏览
+    String p_search = uri.contains("searchMobile.jsp") ? "active" : "";
+    String p_cart = uri.contains("lookShoppingCar.jsp") ? "active" : "";
+    String p_order = uri.contains("lookOrderForm.jsp") ? "active" : "";
+    String p_chat = uri.contains("chatRoom.jsp") ? "active" : "";
 %>
 
 <div class="navbar">
@@ -17,13 +26,14 @@
     <% if (isLoggedIn) { %>
         <%-- 只有登录后才显示的导航链接 --%>
         <div class="nav-links">
-            <a href="index.jsp">浏览</a>
-            <a href="searchMobile.jsp">搜索</a>
-            <a href="lookShoppingCar.jsp">购物车</a>
-            <a href="lookOrderForm.jsp">订单</a>
+            <a href="index.jsp" class="<%=p_index%>">首页</a>
+            <a href="lookMobile.jsp" class="<%=p_look%>">浏览</a>
+            <a href="searchMobile.jsp" class="<%=p_search%>">搜索</a>
+            <a href="lookShoppingCar.jsp" class="<%=p_cart%>">购物车</a>
+            <a href="lookOrderForm.jsp" class="<%=p_order%>">订单</a>
 
             <%-- 在线聊天室入口 --%>
-            <a href="chatRoom.jsp" style="color: #0071e3; font-weight: bold;">💬 在线聊天</a>
+            <a href="chatRoom.jsp" style="color: #0071e3; font-weight: bold;" class="<%=p_chat%>">💬 在线聊天</a>
         </div>
     <% } %>
 
